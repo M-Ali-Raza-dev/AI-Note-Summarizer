@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Note Summarizer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-section">
+                <i class="fas fa-brain logo-icon"></i>
+                <h1 class="title">AI Note Summarizer</h1>
+            </div>
+            <div class="subtitle">Transform your lengthy notes into concise, intelligent summaries</div>
+        </div>
+
+        <div class="main-content">
+            <div class="input-section">
+                <div class="section-header">
+                    <i class="fas fa-file-text"></i>
+                    <h2>Your Notes</h2>
+                </div>
+                <div class="textarea-container">
+                    <textarea 
+                        id="noteInput" 
+                        placeholder="Paste your notes here... The AI will analyze and create a comprehensive summary for you."
+                        rows="12"
+                    ></textarea>
+                    <div class="char-counter">
+                        <span id="charCount">0</span> characters
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <div class="summary-options">
+                        <label for="summaryLength">Summary Length:</label>
+                        <select id="summaryLength">
+                            <option value="short">Short (2-3 sentences)</option>
+                            <option value="medium" selected>Medium (1 paragraph)</option>
+                            <option value="long">Long (2-3 paragraphs)</option>
+                        </select>
+                    </div>
+                    
+                    <button id="summarizeBtn" class="summarize-btn">
+                        <i class="fas fa-magic"></i>
+                        <span>Summarize Notes</span>
+                        <div class="btn-shine"></div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="output-section">
+                <div class="section-header">
+                    <i class="fas fa-lightbulb"></i>
+                    <h2>AI Summary</h2>
+                </div>
+                
+                <div class="summary-container" id="summaryContainer">
+                    <div class="empty-state">
+                        <i class="fas fa-robot"></i>
+                        <p>Your AI-generated summary will appear here</p>
+                    </div>
+                </div>
+                
+                <div class="output-actions" id="outputActions" style="display: none;">
+                    <button class="action-btn copy-btn" id="copyBtn">
+                        <i class="fas fa-copy"></i>
+                        Copy Summary
+                    </button>
+                    <button class="action-btn download-btn" id="downloadBtn">
+                        <i class="fas fa-download"></i>
+                        Download
+                    </button>
+                    <button class="action-btn clear-btn" id="clearBtn">
+                        <i class="fas fa-trash"></i>
+                        Clear All
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <div class="stat-card">
+                <i class="fas fa-file-alt"></i>
+                <div class="stat-info">
+                    <span class="stat-number" id="originalWords">0</span>
+                    <span class="stat-label">Original Words</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-compress-alt"></i>
+                <div class="stat-info">
+                    <span class="stat-number" id="summaryWords">0</span>
+                    <span class="stat-label">Summary Words</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-percentage"></i>
+                <div class="stat-info">
+                    <span class="stat-number" id="compressionRatio">0%</span>
+                    <span class="stat-label">Compression</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>AI is analyzing your notes...</p>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Success!</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
